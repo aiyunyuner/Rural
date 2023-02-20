@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * @author TypeDelta
+ */
 @Data
 public class User {
     private int id;
