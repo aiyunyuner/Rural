@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      name: user-consumer
+      label: master
+      profile: default
+      discovery:
+        enabled: true
+        service-id: config-server
