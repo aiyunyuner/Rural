@@ -1,0 +1,130 @@
+server:
+  port: 10010
+#zuul自动从eureka配置一套路由规则
+# 服务id：/服务id/**
+#zuul:
+#  routes: #路由规则
+#    user-server: /user-server/** #key：user-server 服务的id，value：/user-server/** 服务user-server的映射路径 只要符合这个路径的请求都会转发到user-server中
+#      path: /user-server/**
+#      serviceId: user-server #面向服务的路由 底层调用eureka拉取服务列表 利用负载均衡算法 动态拉取一个服务
+#      url: http://127.0.0.1:8088 #面向url的路由  转发到http://127.0.0.1:8088/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+spring:
+  application:
+    name: gateway
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+zuul:
+  routes:
+    #    video-server:
+    #      path: /video/**
+    #      serviceId: video-server
+    #      stripPrefix: false
+    #    home-server:
+    #      path: /home/**
+    #      serviceId: home-server
+    #      stripPrefix: false
+    img-server:
+      path: /img/**
+      serviceId: img-server
+      stripPrefix: false
+
+    video-consumer-service:
+      path: /video/**
+      serviceId: video-consumer-service
+      stripPrefix: false
+
+    playvideo-server:
+      path: /playvideo/**
+      serviceId: playvideo-server
+      stripPrefix: false
+
+    home-server:
+      path: /home/**
+      serviceId: home-server
+      stripPrefix: false
+
+    user-server:
+      path: /user/**
+      serviceId: user-server
+      stripPrefix: false
+
+    search-consumer-service:
+      path: /search/**
+      serviceId: search-consumer-service
+      stripPrefix: false
+
+    bulletscreen-consumer-service:
+      path: /bulletscreen/**
+      serviceId: bulletscreen-consumer-service
+      stripPrefix: false
+
+    history-consumer-service:
+      path: /history/**
+      serviceId: history-consumer-service
+      stripPrefix: false
+
+    collect-consumer-service:
+      path: /collect/**
+      serviceId: collect-consumer-service
+      stripPrefix: false
+
+    user-consumer-service:
+      path: /user/**
+      serviceId: user-consumer-service
+      stripPrefix: false
+
+    upload-video-service:
+      path: /upload/**
+      serviceId: upload-video-service
+      stripPrefix: false
+
+    upload-video-consumer:
+      path: /uploadV/**
+      serviceId: upload-video-consumer
+      stripPrefix: false
+
+    upload-img-service:
+      path: /upload/**
+      serviceId: upload-img-service
+      stripPrefix: false
+
+    upload-img-consumer:
+      path: /uploadI/**
+      serviceId: upload-img-consumer
+      stripPrefix: false
+
+    #将path：/user/**路径变成实际路径不再去除/user前缀（即匹配路径）
+  #    consumer-service:
+  #      path: /consumer/**
+  #      serviceId: consumer-service
+  #      stripPrefix: false
+
+  ignored-services: #忽略默认从eureka下拉取去的部分服务，不想让其向外暴露，只让它在服务间调用
+    - video-server
+    - search-server
+    - bulletscreen-server
+    - history-server
+    - collect-server
+    - user-server
+    - upload-video-server
+    - upload-img-server
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000 #自定义全局默认超时3000ms，默认值是1000ms很容易熔断
+ribbon:
+  connectionTimeOut: 500 #单位ms 默认1000ms
+  ReadTimeOut: 2000 #单位ms 默认1000
