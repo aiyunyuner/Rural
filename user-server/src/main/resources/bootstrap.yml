@@ -4,15 +4,4 @@ spring:
       name: user-server
       label: master
       profile: default
-      discovery:
-        enabled: true
-        service-id: config-server
-
-#度量指标监控与健康检查
-management:
-  endpoints:
-    web:
-      base-path: /actuator #访问端点的根路径，默认 /actuator
-      exposure:
-        include: '*'  #开启需要的端点，这里主要是用到refresh这个端点 ,'*'是除了shuntdown没有开启
-      #   exclude:  #不需要启动的端点
+      uri: http://localhost:8888

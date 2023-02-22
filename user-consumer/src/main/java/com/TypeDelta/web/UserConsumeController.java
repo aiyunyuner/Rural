@@ -5,6 +5,8 @@ import com.TypeDelta.client.UserClient;
 import com.TypeDelta.pojo.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,16 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 @Log4j2
+@RefreshScope
 public class UserConsumeController {
 
+    @Value("${name}")
+    private String name;
+
+    @GetMapping("/name")
+    public String getName() {
+        return name;
+    }
 
     @Autowired
     private UserClient userClient;
