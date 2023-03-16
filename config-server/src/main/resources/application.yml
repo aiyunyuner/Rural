@@ -11,9 +11,9 @@ spring:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
-    virtual-host: my
-    username: abc
-    password: abc
+    virtual-host: /
+    username: admin
+    password: admin
 
 #度量指标监控与健康检查
 management:

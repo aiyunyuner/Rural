@@ -18,6 +18,13 @@
         <module>config-client</module>
         <module>sights-server</module>
         <module>sights-consumer</module>
+        <module>img-server</module>
+        <module>agricultural-server</module>
+        <module>agricultural-consumer</module>
+        <module>rural-dynamics-server</module>
+        <module>rural-dynamics-consumer</module>
+        <module>rural-employment-server</module>
+        <module>rural-employment-consumer</module>
     </modules>
 
     <properties>

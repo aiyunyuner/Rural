@@ -1,0 +1,33 @@
+server:
+  port: 10012
+spring:
+  application:
+    name: agricultural-consumer-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    username: admin
+    password: admin
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+    registry-fetch-interval-seconds: 30 #默认是30s拉取时长，可以改小一些例如3s,4s
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+feign:
+  hystrix:
+    enabled: true #开启feign对hystrix的支持 熔断开启
+ribbon:
+  connectionTimeOut: 500 #单位ms 默认1000ms 只是在feign需要中配置
+  ReadTimeOut: 2000 #单位ms 默认1000 只是在feign需要中配置
+#度量指标监控与健康检查
+management:
+  endpoints:
+    web:
+      base-path: /actuator   # ##访问端点的根路径，默认 /actuator
+      exposure:
+        include: bus-refresh   #开启需要的端点，这里主要是用到refresh这个端点 ,'*'是除了shuntdown没有开启 也可以单独开启bus-refresh
+      #   exclude:  #不需要启动的端点

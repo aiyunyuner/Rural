@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author TypeDelta
+ * @author delta
  */
 @Data
 public class User {
