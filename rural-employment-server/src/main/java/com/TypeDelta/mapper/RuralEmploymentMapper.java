@@ -14,6 +14,6 @@ public interface RuralEmploymentMapper {
     @Select("SELECT * FROM rural_employment")
     List<RuralEmployment> getAll();
 
-    @Select("SELECT * FROM rural_employment where id={id}")
+    @Select("SELECT * FROM rural_employment where id=#{id}")
     RuralEmployment getRuralEmploymentById(Integer id);
 }

@@ -15,7 +15,6 @@
         <module>common</module>
         <module>eureka-service</module>
         <module>config-server</module>
-        <module>config-client</module>
         <module>sights-server</module>
         <module>sights-consumer</module>
         <module>img-server</module>

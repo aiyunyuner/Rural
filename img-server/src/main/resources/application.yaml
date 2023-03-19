@@ -1,5 +1,6 @@
 web:
   upload-path: C:/upload/
+  http-string: http://localhost:10010/img/
 server:
   port: 10090
 spring:

@@ -23,7 +23,7 @@ public class RuralDynamicsConsumerController {
     }
 
     @PostMapping("/one")
-    public RuralDynamics getRuralDynamicsById(@RequestBody Integer id) {
+    public RuralDynamics getRuralDynamicsById( Integer id) {
         return ruralDynamicsClient.getRuralDynamicsById(id);
     }
 }

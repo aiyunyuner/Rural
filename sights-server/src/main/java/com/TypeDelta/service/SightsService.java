@@ -1,8 +1,8 @@
 package com.TypeDelta.service;
 
 import com.TypeDelta.mapper.SightsMapper;
+import com.TypeDelta.pojo.IndexSightsType;
 import com.TypeDelta.pojo.Sight;
-import com.TypeDelta.pojo.SightsType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,20 @@ public class SightsService {
         return sightsMapper.getAllNumber();
     }
 
-    public List<SightsType> getSightsTypeAll() {
+    public List<IndexSightsType> getSightsTypeAll() {
         return sightsMapper.getSightsTypeAll();
+    }
+
+    public IndexSightsType getSightsTypeOne(Integer id) {
+        return sightsMapper.getSightsTypeOne(id);
+    }
+
+    public List<Sight> getSightsAllByType(Integer id) {
+        return sightsMapper.getSightsAllByType(id);
+    }
+
+
+    public Integer insertSight(Sight sight) {
+        return sightsMapper.insertSight(sight);
     }
 }

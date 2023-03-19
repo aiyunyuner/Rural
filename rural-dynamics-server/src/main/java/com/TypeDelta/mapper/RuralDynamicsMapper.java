@@ -14,6 +14,6 @@ public interface RuralDynamicsMapper {
     @Select("SELECT * FROM rural_dynamics")
     List<RuralDynamics> getAll();
 
-    @Select("SELECT * FROM rural_dynamics where id={id}")
+    @Select("SELECT * FROM rural_dynamics where id=#{id}")
     RuralDynamics getRuralDynamicsById(Integer id);
 }

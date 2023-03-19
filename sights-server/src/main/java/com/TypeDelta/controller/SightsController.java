@@ -1,7 +1,7 @@
 package com.TypeDelta.controller;
 
+import com.TypeDelta.pojo.IndexSightsType;
 import com.TypeDelta.pojo.Sight;
-import com.TypeDelta.pojo.SightsType;
 import com.TypeDelta.service.SightsService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +33,28 @@ public class SightsController {
     }
 
     @GetMapping("/getSightsTypeAll")
-    public List<SightsType> getSightsTypeAll() {
+    public List<IndexSightsType> getSightsTypeAll() {
         return sightsService.getSightsTypeAll();
     }
 
     @PostMapping("/getSightsById")
     Sight getSightsById(@RequestBody Integer id) {
         return sightsService.getSightsById(id);
+    }
+
+    @PostMapping("/getSightsTypeOne")
+    IndexSightsType getSightsTypeOne(@RequestBody Integer id) {
+        return sightsService.getSightsTypeOne(id);
+    }
+
+    @PostMapping("/getSightsAllByType")
+    List<Sight> getSightsAllByType(@RequestBody Integer id) {
+        return sightsService.getSightsAllByType(id);
+    }
+
+    @PostMapping("/insert")
+    Integer insertSight(@RequestBody Sight sight) {
+        System.out.println(sight.toString());
+        return sightsService.insertSight(sight);
     }
 }

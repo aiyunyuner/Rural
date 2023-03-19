@@ -24,7 +24,7 @@ public class RuralEmploymentConsumerController {
     }
 
     @PostMapping("/one")
-    RuralEmployment getRuralEmploymentById(@RequestBody Integer id) {
+    RuralEmployment getRuralEmploymentById( Integer id) {
         return ruralEmploymentClient.getRuralEmploymentById(id);
     }
 }

@@ -1,15 +1,12 @@
 package com.TypeDelta.web;
 
 import com.TypeDelta.client.SightsClient;
+import com.TypeDelta.pojo.IndexSightsType;
 import com.TypeDelta.pojo.Sight;
-import com.TypeDelta.pojo.SightsType;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,14 +29,25 @@ public class SightsConsumeController {
     }
 
     @GetMapping("/getSightsTypeAll")
-    public List<SightsType> getSightsTypeAll() {
+    public List<IndexSightsType> getSightsTypeAll() {
         return sightsClient.getSightsTypeAll();
     }
 
 
     @PostMapping("/getSightsById")
     Sight getSightsById(Integer id) {
-        log.info(id);
+
         return sightsClient.getSightsById(id);
+    }
+
+
+    @PostMapping("/getSightsTypeOne")
+    IndexSightsType getSightsTypeOne(Integer id) {
+        return sightsClient.getSightsTypeOne(id);
+    }
+
+    @PostMapping("/insert")
+    Integer insertSight( Sight sight) {
+        return sightsClient.insertSight(sight);
     }
 }

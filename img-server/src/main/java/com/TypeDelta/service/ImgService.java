@@ -16,6 +16,10 @@ import java.util.UUID;
 public class ImgService {
     @Value("${web.upload-path}")
     private String targetFilePath;
+
+    @Value("${web.http-string}")
+
+    private String HTTPString;
     @Autowired
     private ImgMapper imgMapper;
 
@@ -36,6 +40,6 @@ public class ImgService {
 
             }
         }
-        return fileName;
+        return HTTPString + fileName;
     }
 }
