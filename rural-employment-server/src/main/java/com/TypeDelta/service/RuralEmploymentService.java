@@ -19,4 +19,8 @@ public class RuralEmploymentService {
     public RuralEmployment getRuralEmploymentById(Integer id) {
         return ruralEmploymentMapper.getRuralEmploymentById(id);
     }
+
+    public Integer insertRuralEmployment(RuralEmployment ruralEmployment) {
+        return ruralEmploymentMapper.insertRuralEmployment(ruralEmployment);
+    }
 }

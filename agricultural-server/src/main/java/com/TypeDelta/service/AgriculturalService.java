@@ -4,7 +4,6 @@ import com.TypeDelta.mapper.AgriculturalMapper;
 import com.TypeDelta.pojo.Agricultural;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -18,7 +17,12 @@ public class AgriculturalService {
         return agriculturalMapper.getAll();
     }
 
-    public Agricultural getAgriculturalById(@RequestBody Integer id) {
+    public Agricultural getAgriculturalById(Integer id) {
         return agriculturalMapper.getAgriculturalById(id);
+    }
+
+    public Integer insertAgricultural(Agricultural agricultural) {
+
+        return agriculturalMapper.insertAgricultural(agricultural);
     }
 }

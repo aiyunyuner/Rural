@@ -14,4 +14,7 @@ public interface RuralEmploymentClient {
 
     @PostMapping("/employment/one")
     RuralEmployment getRuralEmploymentById(Integer id);
+
+    @PostMapping("/employment/insert")
+    Integer insertRuralEmployment(RuralEmployment ruralEmployment);
 }

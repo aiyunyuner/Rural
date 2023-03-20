@@ -14,4 +14,6 @@ public interface AgriculturalClient {
 
     @PostMapping("/agricultural/one")
     Agricultural getAgriculturalById(Integer id);
+    @PostMapping("/agricultural/insert")
+    Integer insertAgricultural(Agricultural agricultural);
 }

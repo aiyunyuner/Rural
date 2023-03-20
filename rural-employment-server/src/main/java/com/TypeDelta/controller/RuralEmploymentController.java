@@ -26,4 +26,10 @@ public class RuralEmploymentController {
     RuralEmployment getRuralEmploymentById(@RequestBody Integer id) {
         return ruralEmploymentService.getRuralEmploymentById(id);
     }
+
+
+    @PostMapping("/insert")
+    Integer insertRuralEmployment(@RequestBody RuralEmployment ruralEmployment) {
+        return ruralEmploymentService.insertRuralEmployment(ruralEmployment);
+    }
 }

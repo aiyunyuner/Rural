@@ -31,4 +31,10 @@ public class AgriculturalController {
     Agricultural getAgriculturalById(@RequestBody Integer id) {
         return agriculturalService.getAgriculturalById(id);
     }
+
+
+    @PostMapping("insert")
+    Integer insertAgricultural(@RequestBody Agricultural agricultural) {
+        return agriculturalService.insertAgricultural(agricultural);
+    }
 }

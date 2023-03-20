@@ -15,4 +15,9 @@ public class RuralEmploymentClientFallback implements RuralEmploymentClient {
     public RuralEmployment getRuralEmploymentById(Integer id) {
         return null;
     }
+
+    @Override
+    public Integer insertRuralEmployment(RuralEmployment ruralEmployment) {
+        return null;
+    }
 }

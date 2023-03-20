@@ -27,4 +27,10 @@ public class RuralEmploymentConsumerController {
     RuralEmployment getRuralEmploymentById( Integer id) {
         return ruralEmploymentClient.getRuralEmploymentById(id);
     }
+
+
+    @PostMapping("/insert")
+    Integer insertRuralEmployment( RuralEmployment ruralEmployment) {
+        return ruralEmploymentClient.insertRuralEmployment(ruralEmployment);
+    }
 }

@@ -23,7 +23,13 @@ public class AgriculturalConsumerController {
     }
 
     @PostMapping("/one")
-    Agricultural getAgriculturalById( Integer id) {
+    Agricultural getAgriculturalById(Integer id) {
         return agriculturalClient.getAgriculturalById(id);
+    }
+
+
+    @PostMapping("insert")
+    Integer insertAgricultural(Agricultural agricultural) {
+        return agriculturalClient.insertAgricultural(agricultural);
     }
 }

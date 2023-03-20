@@ -15,4 +15,9 @@ public class RuralDynamicsClientFallback implements RuralDynamicsClient{
     public RuralDynamics getRuralDynamicsById(Integer id) {
         return null;
     }
+
+    @Override
+    public Integer insertRuralDynamics(RuralDynamics ruralDynamics) {
+        return null;
+    }
 }

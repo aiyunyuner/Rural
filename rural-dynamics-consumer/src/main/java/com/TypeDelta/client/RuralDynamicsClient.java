@@ -14,4 +14,6 @@ public interface RuralDynamicsClient {
 
     @PostMapping("/rural/one")
     RuralDynamics getRuralDynamicsById(Integer id);
+    @PostMapping("/rural/insert")
+    Integer insertRuralDynamics(RuralDynamics ruralDynamics);
 }

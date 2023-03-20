@@ -23,7 +23,13 @@ public class RuralDynamicsConsumerController {
     }
 
     @PostMapping("/one")
-    public RuralDynamics getRuralDynamicsById( Integer id) {
+    public RuralDynamics getRuralDynamicsById(Integer id) {
         return ruralDynamicsClient.getRuralDynamicsById(id);
+    }
+
+
+    @PostMapping("/insert")
+    Integer insertRuralDynamics(RuralDynamics ruralDynamics) {
+        return ruralDynamicsClient.insertRuralDynamics(ruralDynamics);
     }
 }

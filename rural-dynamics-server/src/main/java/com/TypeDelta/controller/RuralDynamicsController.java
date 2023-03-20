@@ -26,4 +26,10 @@ public class RuralDynamicsController {
     public RuralDynamics getRuralDynamicsById(@RequestBody Integer id) {
         return ruralDynamicsService.getRuralDynamicsById(id);
     }
+
+
+    @PostMapping("/insert")
+    Integer insertRuralDynamics(@RequestBody RuralDynamics ruralDynamics) {
+        return ruralDynamicsService.insertRuralDynamics(ruralDynamics);
+    }
 }

@@ -16,4 +16,9 @@ public class AgriculturalClientFallback implements AgriculturalClient{
     public Agricultural getAgriculturalById(Integer id) {
         return null;
     }
+
+    @Override
+    public Integer insertAgricultural(Agricultural agricultural) {
+        return null;
+    }
 }

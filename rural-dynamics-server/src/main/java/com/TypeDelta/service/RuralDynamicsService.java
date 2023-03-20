@@ -19,4 +19,8 @@ public class RuralDynamicsService {
     public RuralDynamics getRuralDynamicsById(Integer id) {
         return ruralDynamicsMapper.getRuralDynamicsById(id);
     }
+
+    public Integer insertRuralDynamics(RuralDynamics ruralDynamics) {
+        return ruralDynamicsMapper.insertRuralDynamics(ruralDynamics);
+    }
 }
