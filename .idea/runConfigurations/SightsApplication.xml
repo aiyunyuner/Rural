@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="SightsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="boot" nameIsGenerated="true">
+  <configuration default="false" name="SightsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <module name="sights-server" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.TypeDelta.SightsApplication" />
     <extension name="coverage">

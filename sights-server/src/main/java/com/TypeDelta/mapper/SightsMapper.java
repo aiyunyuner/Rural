@@ -1,8 +1,6 @@
 package com.TypeDelta.mapper;
 
-import com.TypeDelta.pojo.IndexSightsType;
-import com.TypeDelta.pojo.Sight;
-import com.TypeDelta.pojo.SightsType;
+import com.TypeDelta.pojo.*;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -55,10 +53,50 @@ public interface SightsMapper {
     IndexSightsType getSightsTypeOne(Integer id);
 
 
-    @Select("SELECT * FROM sight WHERE `type`=#{id}")
+    @Select("SELECT * FROM sight WHERE `type`=#{id} limit 0,6")
     List<Sight> getSightsAllByType(Integer id);
 
 
-    @Insert("INSERT INTO sight (`name`,image,`type`,`desc`,`color`,`where`) VALUES(#{name},#{image},#{type},#{desc},#{color},#{where})")
+    @Insert("INSERT INTO sight (`name`,image,`type`,`desc`,`color`,`where`,`u_id`) VALUES(#{name},#{image},#{type},#{desc},#{color},#{where},#{u_id})")
     Integer insertSight(Sight sight);
+
+
+    @Update("UPDATE sight SET  `name` = #{name},image=#{image},`type`=#{type},`desc`=#{desc},`color`=#{color},`where`=#{where} WHERE id =#{id}")
+    Integer updateSight(Sight sight);
+
+
+    @Delete("DELETE FROM sight WHERE id = #{id}")
+    Integer deleteSight(Integer id);
+
+    @Select("SELECT COUNT(id) FROM sight  where `type`=#{id}")
+    Integer countTypeSight(Integer id);
+
+    @Select("SELECT * FROM sight WHERE `type`=#{id} limit #{start},#{pageSize}")
+    List<Sight> getSightsAllByTypeTwo(PageInfo pageInfo);
+
+
+    @Select("SELECT * FROM sight WHERE u_id =#{u_id} limit #{start},#{pageSize}")
+    List<Sight> getSightsAllByUser(PageInfo pageInfo);
+
+    @Select("SELECT COUNT(id) FROM sight  where `u_id`=#{u_id}")
+    Integer countTypeSightByUser(Integer u_id);
+
+
+    @Insert("INSERT INTO sight_comment (u_id,p_id,`context`,`time`) VALUES(#{u_id},#{p_id},#{context},#{time}) ")
+    Integer insertComment(Comment comment);
+
+
+    @Select("SELECT * FROM sight_comment where p_id = #{p_id} limit #{start},#{pageSize}")
+    @Results({
+            @Result(property = "u_id", column = "u_id"),
+            @Result(property = "user", column = "u_id",
+                    javaType = User.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getUser"))
+    })
+    List<Comment> getCommentAll(PageInfo pageInfo);
+
+    @Select("SELECT COUNT(id) FROM sight_comment  where `p_id`=#{id}")
+    Integer commentCunt(Integer id);
+
+    @Select("select * from user where id=#{id}")
+    User getUser(Integer id);
 }

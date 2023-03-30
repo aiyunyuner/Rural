@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="RuralEmploymentConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="boot" nameIsGenerated="true">
+  <configuration default="false" name="RuralEmploymentConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <module name="rural-employment-consumer" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.TypeDelta.RuralEmploymentConsumerApplication" />
     <extension name="coverage">

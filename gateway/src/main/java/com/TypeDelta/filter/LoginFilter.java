@@ -1,15 +1,21 @@
 package com.TypeDelta.filter;
 
+import com.TypeDelta.utils.JWTUtils;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.TypeDelta.utils.Info.*;
 
@@ -47,14 +53,45 @@ public class LoginFilter extends ZuulFilter {
         //        获取请求上下文
         RequestContext ctx = RequestContext.getCurrentContext(); //有点像request域 zuul整个流程都有这个域
         HttpServletRequest request = ctx.getRequest();
+
         //        获取请求的参数
+
         String token = request.getHeader("token");
 //        String token = request.getParameter("access-token");
 //        判断是否存在
-        if (StringUtils.isBlank(token)) {
-//            不存在，未登录，拦截
-            ctx.setSendZuulResponse(false); //默认是true false中断前行
-            ctx.setResponseStatusCode(HttpStatus.FORBIDDEN.value());//返回403
+        try {
+            JWTUtils.verify(token);
+            String id = JWTUtils.getTokenInfo(token).getClaim("id").asString();
+            Map<String, List<String>> requestQueryParams = ctx.getRequestQueryParams();
+            if (requestQueryParams == null) requestQueryParams = new HashMap<>();
+            //将要新增的参数添加进去,被调用的微服务可以直接 去取,就想普通的一样,框架会直接注入进去
+            ArrayList<String> paramsList = new ArrayList<>();
+            paramsList.add(id);
+            requestQueryParams.put("u_id", paramsList);
+            ctx.setRequestQueryParams(requestQueryParams);
+            ctx.setSendZuulResponse(true);
+        } catch (SignatureVerificationException e) {
+            e.printStackTrace();
+
+//            ctx.setResponseBody("无效签名");
+            ctx.setResponseBody("token error");
+            ctx.setSendZuulResponse(false);
+        } catch (TokenExpiredException e) {
+            e.printStackTrace();
+
+//            ctx.setResponseBody("token过期");
+            ctx.setResponseBody("token error");
+            ctx.setSendZuulResponse(false);
+        } catch (AlgorithmMismatchException e) {
+            e.printStackTrace();
+
+//            ctx.setResponseBody("token算法不一致");
+            ctx.setResponseBody("token error");
+            ctx.setSendZuulResponse(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ctx.setResponseBody("token error");
+            ctx.setSendZuulResponse(false);
 
         }
         System.out.println("现在是zuul：" + server_port);

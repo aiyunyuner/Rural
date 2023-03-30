@@ -17,4 +17,7 @@ public class User {
     private Date created;
     private String error;
     private Integer result;
+    private String image;
+
+    private Integer u_id;
 }

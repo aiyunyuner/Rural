@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class IndexSightsType {
+    private String u_id;
     private String name;
     private Integer type_id;
     private Integer parent_id;

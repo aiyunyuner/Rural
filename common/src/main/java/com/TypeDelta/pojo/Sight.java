@@ -16,6 +16,7 @@ public class Sight {
     private Integer type;
     private SightsType sightsType;
     private String desc;
+    private String u_id;
 
     private Integer likeCount;
 

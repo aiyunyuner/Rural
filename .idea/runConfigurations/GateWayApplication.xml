@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="GateWayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="boot" nameIsGenerated="true">
+  <configuration default="false" name="GateWayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <module name="gateway" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.TypeDelta.GateWayApplication" />
     <option name="VM_PARAMETERS" value="-Xms128m -Xmx128m" />

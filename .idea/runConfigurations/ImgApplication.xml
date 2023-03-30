@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ImgApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="boot" nameIsGenerated="true">
+  <configuration default="false" name="ImgApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <module name="img-server" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.TypeDelta.ImgApplication" />
     <extension name="coverage">

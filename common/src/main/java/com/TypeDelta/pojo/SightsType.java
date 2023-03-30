@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SightsType {
+public class SightsType  {
     private String sights_type;
     private Integer type_id;
     private Integer parent_id;

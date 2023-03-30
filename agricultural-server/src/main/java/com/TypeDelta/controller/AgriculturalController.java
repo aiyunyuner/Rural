@@ -1,6 +1,8 @@
 package com.TypeDelta.controller;
 
 import com.TypeDelta.pojo.Agricultural;
+import com.TypeDelta.pojo.Comment;
+import com.TypeDelta.pojo.PageInfo;
 import com.TypeDelta.service.AgriculturalService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +35,57 @@ public class AgriculturalController {
     }
 
 
-    @PostMapping("insert")
+    @PostMapping("/insert")
     Integer insertAgricultural(@RequestBody Agricultural agricultural) {
+
+
         return agriculturalService.insertAgricultural(agricultural);
+    }
+
+    @PostMapping("/update")
+    Integer updateAgricultural(@RequestBody Agricultural agricultural) {
+        return agriculturalService.updateAgricultural(agricultural);
+    }
+
+    @PostMapping("/delete")
+    Integer deleteAgricultural(@RequestBody Integer id) {
+        return agriculturalService.deleteAgricultural(id);
+    }
+
+    @PostMapping("/count")
+    Integer countAgricultural() {
+        return agriculturalService.countAgricultural();
+    }
+
+    @PostMapping("/more")
+    List<Agricultural> getMore(@RequestBody PageInfo pageInfo) {
+
+        return agriculturalService.getMore(pageInfo);
+    }
+
+    @PostMapping("/me")
+    List<Agricultural> getSightsAllByUser(@RequestBody PageInfo pageInfo) {
+        return agriculturalService.getAgriculturalAllByUser(pageInfo);
+    }
+
+    @PostMapping("/meCunt")
+    Integer countTypeSightByUser(@RequestBody Integer u_id) {
+        return agriculturalService.countAgriculturalByUser(u_id);
+    }
+
+    @PostMapping("/insertComment")
+    Integer insertComment(@RequestBody Comment comment) {
+        return agriculturalService.insertComment(comment);
+    }
+
+    @PostMapping("/getCommentAll")
+    List<Comment> getCommentAll(@RequestBody PageInfo pageInfo) {
+        return agriculturalService.getCommentAll(pageInfo);
+    }
+
+
+    @PostMapping("/commentCunt")
+    Integer commentCunt(@RequestBody Integer id) {
+        return agriculturalService.commentCunt(id);
     }
 }

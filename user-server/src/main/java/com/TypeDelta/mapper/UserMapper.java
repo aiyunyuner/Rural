@@ -18,7 +18,7 @@ public interface UserMapper {
      * 插入User
      * @param user
      */
-    @Insert("INSERT into user (name,password,valid)VALUE(#{name},#{password},#{valid})")
+    @Insert("INSERT into user (name,password)VALUE(#{name},#{password})")
     void addUser(User user);
 
     /***
@@ -29,10 +29,10 @@ public interface UserMapper {
     @Delete("DELETE FROM user WHERE id = #{id}")
     int deleterUser(User user);
 
-    @Update("UPDATE user set name =#{name},password=#{password},valid = #{valid} WHERE id = #{id};")
+    @Update("UPDATE user set name =#{name},password=#{password},image=#{image} WHERE id = #{u_id};")
     int updateUser(User user);
 
-    @Select("SELECT id,name,password FROM user WHERE name=#{name} AND password=#{password}")
+    @Select("SELECT * FROM user WHERE name=#{name} AND password=#{password}")
     User loginUser(User user);
 
     @Select("select id,name,password,valid from user")
@@ -43,4 +43,8 @@ public interface UserMapper {
 
     @Select("select count(id) from user")
     Integer countUser();
+
+
+    @Select("select * from user where id=#{id}")
+    User getUser(Integer id);
 }

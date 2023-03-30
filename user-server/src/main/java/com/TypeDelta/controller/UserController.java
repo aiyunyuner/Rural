@@ -31,7 +31,6 @@ public class UserController {
         return name;
     }
 
-    private Integer result = 0;
     @Autowired
     private UserService userService;
 
@@ -92,6 +91,7 @@ public class UserController {
                 map.put("statue", true);
                 map.put("msg", "认证成功");
                 map.put("token", token);
+                map.put("user", loginUser);
             } else {
                 map.put("statue", false);
                 map.put("msg", "认证失败");

@@ -1,5 +1,8 @@
 package com.TypeDelta.controller;
 
+import com.TypeDelta.pojo.Agricultural;
+import com.TypeDelta.pojo.Comment;
+import com.TypeDelta.pojo.PageInfo;
 import com.TypeDelta.pojo.RuralEmployment;
 import com.TypeDelta.service.RuralEmploymentService;
 import lombok.extern.log4j.Log4j2;
@@ -31,5 +34,54 @@ public class RuralEmploymentController {
     @PostMapping("/insert")
     Integer insertRuralEmployment(@RequestBody RuralEmployment ruralEmployment) {
         return ruralEmploymentService.insertRuralEmployment(ruralEmployment);
+    }
+
+
+    @PostMapping("/update")
+    Integer updateRuralEmployment(@RequestBody RuralEmployment ruralEmployment) {
+        return ruralEmploymentService.updateRuralEmployment(ruralEmployment);
+    }
+
+    @PostMapping("/delete")
+    Integer deleteRuralEmployment(@RequestBody Integer id) {
+        return ruralEmploymentService.deleteRuralEmployment(id);
+    }
+
+
+    @PostMapping("/count")
+    Integer countRuralDynamics() {
+        return ruralEmploymentService.countRuralDynamics();
+    }
+
+    @PostMapping("/more")
+    List<RuralEmployment> getMore(@RequestBody PageInfo pageInfo) {
+        return ruralEmploymentService.getMore(pageInfo);
+    }
+
+
+    @PostMapping("/me")
+    List<Agricultural> getRuralEmploymentAllByUser(@RequestBody PageInfo pageInfo) {
+        return ruralEmploymentService.getRuralEmploymentAllByUser(pageInfo);
+    }
+
+    @PostMapping("/meCunt")
+    Integer countRuralEmploymentByUser(@RequestBody Integer u_id) {
+        return ruralEmploymentService.countRuralEmploymentByUser(u_id);
+    }
+
+    @PostMapping("/insertComment")
+    Integer insertComment(@RequestBody Comment comment) {
+        return ruralEmploymentService.insertComment(comment);
+    }
+
+    @PostMapping("/getCommentAll")
+    List<Comment> getCommentAll(@RequestBody PageInfo pageInfo) {
+        return ruralEmploymentService.getCommentAll(pageInfo);
+    }
+
+
+    @PostMapping("/commentCunt")
+    Integer commentCunt(@RequestBody Integer id) {
+        return ruralEmploymentService.commentCunt(id);
     }
 }

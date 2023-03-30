@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="UserConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="boot" nameIsGenerated="true">
+  <configuration default="false" name="UserConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <module name="user-consumer" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.TypeDelta.UserConsumerApplication" />
     <option name="VM_PARAMETERS" value="-Xms128m -Xmx128m" />

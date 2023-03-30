@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class RuralDynamics {
+    private String u_id;
     private String name;
     private Integer id;
     private Integer click;
