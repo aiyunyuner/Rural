@@ -4,6 +4,7 @@ import com.TypeDelta.mapper.AgriculturalMapper;
 import com.TypeDelta.pojo.Agricultural;
 import com.TypeDelta.pojo.Comment;
 import com.TypeDelta.pojo.PageInfo;
+import com.TypeDelta.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class AgriculturalService {
     }
 
     public Agricultural getAgriculturalById(Integer id) {
+        agriculturalMapper.addClick(id);
         return agriculturalMapper.getAgriculturalById(id);
     }
 
@@ -37,7 +39,6 @@ public class AgriculturalService {
     }
 
     public Integer countAgricultural() {
-
         return agriculturalMapper.countAgricultural();
     }
 
@@ -56,6 +57,7 @@ public class AgriculturalService {
     }
 
     public Integer insertComment(Comment comment) {
+        comment.setTime(TimeUtils.setTime());
         return agriculturalMapper.insertComment(comment);
     }
 

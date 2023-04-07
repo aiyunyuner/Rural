@@ -5,6 +5,7 @@ import com.TypeDelta.pojo.Agricultural;
 import com.TypeDelta.pojo.Comment;
 import com.TypeDelta.pojo.PageInfo;
 import com.TypeDelta.pojo.RuralEmployment;
+import com.TypeDelta.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class RuralEmploymentService {
     }
 
     public RuralEmployment getRuralEmploymentById(Integer id) {
+        ruralEmploymentMapper.addClick(id);
         return ruralEmploymentMapper.getRuralEmploymentById(id);
     }
 
@@ -54,6 +56,7 @@ public class RuralEmploymentService {
     }
 
     public Integer insertComment(Comment comment) {
+        comment.setTime(TimeUtils.setTime());
         return ruralEmploymentMapper.insertComment(comment);
     }
 

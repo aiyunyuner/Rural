@@ -10,22 +10,14 @@ import java.util.List;
 @Mapper
 public interface SightsMapper {
     @Select("SELECT * FROM sight")
-    @Results({
-            @Result(property = "type", column = "type"),
-            @Result(property = "sightsType",
-                    column = "type",
-                    javaType = SightsType.class,
-                    one = @One(select = "com.TypeDelta.mapper.SightsMapper.getSightsTypeById"))
-    })
+    @Results({@Result(property = "type", column = "type"), @Result(property = "sightsType", column = "type", javaType = SightsType.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getSightsTypeById"))})
     List<Sight> getSightsAll();
 
     @Select("SELECT  COUNT(*) FROM sight")
     Integer getAllNumber();
 
     @Select("SELECT * FROM sights_type")
-    @Results({
-            @Result(column = "sights_type", property = "name")
-    })
+    @Results({@Result(column = "sights_type", property = "name")})
     List<IndexSightsType> getSightsTypeAll();
 
     @Select("SELECT * FROM sights_type WHERE type_id = #{id}")
@@ -33,23 +25,11 @@ public interface SightsMapper {
 
 
     @Select("SELECT * FROM sight where id=#{id}")
-    @Results({
-            @Result(property = "type", column = "type"),
-            @Result(property = "sightsType",
-                    column = "type",
-                    javaType = SightsType.class,
-                    one = @One(select = "com.TypeDelta.mapper.SightsMapper.getSightsTypeById"))
-    })
+    @Results({@Result(property = "type", column = "type"), @Result(property = "sightsType", column = "type", javaType = SightsType.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getSightsTypeById"))})
     Sight getSightsById(Integer id);
 
     @Select("SELECT * FROM sights_type where type_id=#{id}")
-    @Results({
-            @Result(column = "type_id", property = "type_id"),
-            @Result(column = "sights_type", property = "name"),
-            @Result(property = "sightList", column = "type_id",
-                    javaType = List.class,
-                    many = @Many(select = "com.TypeDelta.mapper.SightsMapper.getSightsAllByType"))
-    })
+    @Results({@Result(column = "type_id", property = "type_id"), @Result(column = "sights_type", property = "name"), @Result(property = "sightList", column = "type_id", javaType = List.class, many = @Many(select = "com.TypeDelta.mapper.SightsMapper.getSightsAllByType"))})
     IndexSightsType getSightsTypeOne(Integer id);
 
 
@@ -87,11 +67,7 @@ public interface SightsMapper {
 
 
     @Select("SELECT * FROM sight_comment where p_id = #{p_id} limit #{start},#{pageSize}")
-    @Results({
-            @Result(property = "u_id", column = "u_id"),
-            @Result(property = "user", column = "u_id",
-                    javaType = User.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getUser"))
-    })
+    @Results({@Result(property = "u_id", column = "u_id"), @Result(property = "user", column = "u_id", javaType = User.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getUser"))})
     List<Comment> getCommentAll(PageInfo pageInfo);
 
     @Select("SELECT COUNT(id) FROM sight_comment  where `p_id`=#{id}")
@@ -99,4 +75,29 @@ public interface SightsMapper {
 
     @Select("select * from user where id=#{id}")
     User getUser(Integer id);
+
+
+    @Update("UPDATE sight SET  `click`=`click`+1 WHERE id =#{id}")
+    Integer addClick(Integer id);
+
+    @Insert("INSERT INTO read_user (u_id,p_id)VALUES(#{u_id},#{id})")
+    Integer addRead(ReadUser readUser);
+
+    @Select("SELECT id FROM user")
+    List<Integer> getU_id();
+
+    @Select("SELECT id FROM sight")
+    List<Integer> getP_id();
+
+
+    @Select("SELECT p_id FROM read_user  WHERE u_id = #{u_id} GROUP BY p_id")
+    List<Integer> getValue(Integer u_id);
+
+    @Select("SELECT p_id FROM read_user  WHERE u_id = #{u_id} and p_id=#{i} LIMIT 0,1")
+    Integer notRead(Integer i, Integer u_id);
+
+
+    @Select("SELECT * FROM sight   ORDER BY click DESC   LIMIT 3,3")
+    @Results({@Result(property = "type", column = "type"), @Result(property = "sightsType", column = "type", javaType = SightsType.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getSightsTypeById"))})
+    List<Sight> TOP3();
 }

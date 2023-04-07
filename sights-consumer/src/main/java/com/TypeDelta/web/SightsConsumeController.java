@@ -1,10 +1,7 @@
 package com.TypeDelta.web;
 
 import com.TypeDelta.client.SightsClient;
-import com.TypeDelta.pojo.Comment;
-import com.TypeDelta.pojo.IndexSightsType;
-import com.TypeDelta.pojo.PageInfo;
-import com.TypeDelta.pojo.Sight;
+import com.TypeDelta.pojo.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -38,8 +35,8 @@ public class SightsConsumeController {
 
 
     @PostMapping("/getSightsById")
-    Sight getSightsById(Integer id) {
-        return sightsClient.getSightsById(id);
+    Sight getSightsById( ReadUser readUser) {
+        return sightsClient.getSightsById(readUser);
     }
 
 
@@ -99,5 +96,17 @@ public class SightsConsumeController {
     @PostMapping("/commentCunt")
     Integer commentCunt( Integer id) {
         return sightsClient.commentCunt(id);
+    }
+
+
+    @PostMapping("/top3")
+    List<Sight> top3() {
+        return sightsClient.top3();
+    }
+
+
+    @PostMapping("/beast")
+    List<Sight> Beast(Integer u_id) {
+        return sightsClient.Beast(u_id);
     }
 }

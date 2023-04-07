@@ -1,9 +1,6 @@
 package com.TypeDelta.controller;
 
-import com.TypeDelta.pojo.Comment;
-import com.TypeDelta.pojo.IndexSightsType;
-import com.TypeDelta.pojo.PageInfo;
-import com.TypeDelta.pojo.Sight;
+import com.TypeDelta.pojo.*;
 import com.TypeDelta.service.SightsService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +37,8 @@ public class SightsController {
     }
 
     @PostMapping("/getSightsById")
-    Sight getSightsById(@RequestBody Integer id) {
-        return sightsService.getSightsById(id);
+    Sight getSightsById(@RequestBody ReadUser readUser) {
+        return sightsService.getSightsById(readUser);
     }
 
     @PostMapping("/getSightsTypeOne")
@@ -105,5 +102,16 @@ public class SightsController {
     @PostMapping("/commentCunt")
     Integer commentCunt(@RequestBody Integer id) {
         return sightsService.commentCunt(id);
+    }
+
+    @PostMapping("/top3")
+    List<Sight> top3() {
+        return sightsService.top3();
+    }
+
+
+    @PostMapping("/beast")
+    List<Sight> Beast(@RequestBody Integer u_id) {
+        return sightsService.Beast(u_id);
     }
 }

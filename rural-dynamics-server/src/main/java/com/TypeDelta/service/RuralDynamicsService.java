@@ -4,6 +4,7 @@ import com.TypeDelta.mapper.RuralDynamicsMapper;
 import com.TypeDelta.pojo.Comment;
 import com.TypeDelta.pojo.PageInfo;
 import com.TypeDelta.pojo.RuralDynamics;
+import com.TypeDelta.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class RuralDynamicsService {
     }
 
     public RuralDynamics getRuralDynamicsById(Integer id) {
+        ruralDynamicsMapper.addClick(id);
         return ruralDynamicsMapper.getRuralDynamicsById(id);
     }
 
@@ -53,6 +55,7 @@ public class RuralDynamicsService {
     }
 
     public Integer insertComment(Comment comment) {
+        comment.setTime(TimeUtils.setTime());
         return ruralDynamicsMapper.insertComment(comment);
     }
 

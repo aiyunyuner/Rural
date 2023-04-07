@@ -49,7 +49,7 @@ public interface RuralDynamicsMapper {
     @Results({
             @Result(property = "u_id", column = "u_id"),
             @Result(property = "user", column = "u_id",
-                    javaType = User.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getUser"))
+                    javaType = User.class, one = @One(select = "com.TypeDelta.mapper.RuralDynamicsMapper.getUser"))
     })
     List<Comment> getCommentAll(PageInfo pageInfo);
 
@@ -58,4 +58,8 @@ public interface RuralDynamicsMapper {
 
     @Select("select * from user where id=#{id}")
     User getUser(Integer id);
+
+
+    @Update("UPDATE rural_dynamics SET  `click`=`click`+1 WHERE id =#{id}")
+    Integer addClick(Integer id);
 }

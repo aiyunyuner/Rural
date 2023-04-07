@@ -1,9 +1,6 @@
 package com.TypeDelta.client;
 
-import com.TypeDelta.pojo.Comment;
-import com.TypeDelta.pojo.IndexSightsType;
-import com.TypeDelta.pojo.PageInfo;
-import com.TypeDelta.pojo.Sight;
+import com.TypeDelta.pojo.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +19,7 @@ public interface SightsClient {
     List<IndexSightsType> getSightsTypeAll();
 
     @PostMapping("/sights/getSightsById")
-    Sight getSightsById(Integer id);
+    Sight getSightsById(ReadUser readUser);
 
     @PostMapping("/sights/getSightsTypeOne")
     IndexSightsType getSightsTypeOne(Integer id);
@@ -56,4 +53,10 @@ public interface SightsClient {
 
     @PostMapping("/sights/commentCunt")
     Integer commentCunt(Integer id);
+
+    @PostMapping("/sights/top3")
+    List<Sight> top3();
+
+    @PostMapping("/sights/beast")
+    List<Sight> Beast(Integer u_id);
 }

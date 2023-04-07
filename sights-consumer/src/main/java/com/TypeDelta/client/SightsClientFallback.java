@@ -1,9 +1,6 @@
 package com.TypeDelta.client;
 
-import com.TypeDelta.pojo.Comment;
-import com.TypeDelta.pojo.IndexSightsType;
-import com.TypeDelta.pojo.PageInfo;
-import com.TypeDelta.pojo.Sight;
+import com.TypeDelta.pojo.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,7 +23,7 @@ public class SightsClientFallback implements SightsClient {
     }
 
     @Override
-    public Sight getSightsById(Integer id) {
+    public Sight getSightsById(ReadUser readUser) {
         return null;
     }
 
@@ -83,6 +80,16 @@ public class SightsClientFallback implements SightsClient {
 
     @Override
     public Integer commentCunt(Integer id) {
+        return null;
+    }
+
+    @Override
+    public List<Sight> top3() {
+        return null;
+    }
+
+    @Override
+    public List<Sight> Beast(Integer u_id) {
         return null;
     }
 }

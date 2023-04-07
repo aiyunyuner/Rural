@@ -18,6 +18,11 @@ eureka:
 spring:
   application:
     name: gateway-server
+  datasource:
+    datasource:
+    username: root
+    password: root
+    url: jdbc:mariadb://127.0.0.1:3306/rural?serverTimezone=Asia/Shanghai
   servlet:
     multipart:
       max-file-size: 100MB
@@ -26,7 +31,7 @@ zuul:
   routes:
     rural-employment-consumer-server:
       path: /employment/**
-      serviceId:  rural-employment-consumer-server
+      serviceId: rural-employment-consumer-server
       stripPrefix: false
 
     rural-dynamics-consumer-server:

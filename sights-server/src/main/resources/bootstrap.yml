@@ -1,8 +1,8 @@
-spring:
-  cloud:
-    config:
-      name: sights-server
-      label: master
-      profile: default
-      uri: http://localhost:8888
+#spring:
+#  cloud:
+#    config:
+#      name: sights-server
+#      label: master
+#      profile: default
+#      uri: http://localhost:8888
 

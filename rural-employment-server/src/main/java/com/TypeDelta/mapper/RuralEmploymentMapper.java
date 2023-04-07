@@ -57,4 +57,7 @@ public interface RuralEmploymentMapper {
 
     @Select("select * from user where id=#{id}")
     User getUser(Integer id);
+
+    @Update("UPDATE rural_employment SET  `click`=`click`+1 WHERE id =#{id}")
+    Integer addClick(Integer id);
 }
