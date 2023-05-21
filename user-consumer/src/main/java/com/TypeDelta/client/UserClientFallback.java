@@ -68,4 +68,9 @@ public class UserClientFallback implements UserClient {
         return 0;
     }
 
+    @Override
+    public Boolean isManager(Integer id) {
+        return null;
+    }
+
 }

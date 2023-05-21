@@ -35,4 +35,7 @@ public interface UserClient {
 
     @GetMapping("/user/count")
     public Integer countUser();
+
+    @PostMapping("/user/isManager")
+    public Boolean isManager(Integer u_id);
 }

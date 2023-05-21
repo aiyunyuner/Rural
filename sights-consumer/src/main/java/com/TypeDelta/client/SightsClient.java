@@ -59,4 +59,10 @@ public interface SightsClient {
 
     @PostMapping("/sights/beast")
     List<Sight> Beast(Integer u_id);
+
+    @PostMapping("/sights/getMore")
+    List<Sight> getMore(PageInfo pageInfo);
+
+    @PostMapping("/sights/getCount")
+    Integer getCount();
 }

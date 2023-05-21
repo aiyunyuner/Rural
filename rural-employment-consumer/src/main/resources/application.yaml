@@ -28,6 +28,11 @@ management:
       exposure:
         include: bus-refresh   #开启需要的端点，这里主要是用到refresh这个端点 ,'*'是除了shuntdown没有开启 也可以单独开启bus-refresh
       #   exclude:  #不需要启动的端点
+
+feign:
+  hystrix:
+    enabled: true #开启feign对hystrix的支持 熔断开启
+
 eureka:
   client:
     service-url:

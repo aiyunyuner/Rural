@@ -78,11 +78,20 @@ public class SightsController {
         return sightsService.getSightsAllByTypeTwo(pageInfo);
     }
 
+    @PostMapping("/getMore")
+    List<Sight> getMore(@RequestBody PageInfo pageInfo) {
+        return sightsService.getMore(pageInfo);
+    }
+
     @PostMapping("/me")
     List<Sight> getSightsAllByUser(@RequestBody PageInfo pageInfo) {
         return sightsService.getSightsAllByUser(pageInfo);
     }
 
+    @PostMapping("/getCount")
+    Integer getCount() {
+        return sightsService.getCount();
+    }
     @PostMapping("/meCunt")
     Integer countTypeSightByUser(@RequestBody Integer u_id) {
         return sightsService.countTypeSightByUser(u_id);

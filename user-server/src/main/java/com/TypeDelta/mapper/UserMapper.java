@@ -47,4 +47,7 @@ public interface UserMapper {
 
     @Select("select * from user where id=#{id}")
     User getUser(Integer id);
+
+    @Select("SELECT maner FROM `user` WHERE id=#{id}")
+    Integer isManager(Integer id);
 }

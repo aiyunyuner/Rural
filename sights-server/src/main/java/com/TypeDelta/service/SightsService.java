@@ -204,4 +204,13 @@ public class SightsService {
         }
         return sightList;
     }
+
+    public List<Sight> getMore(PageInfo pageInfo) {
+        pageInfo.setStart((pageInfo.getStart() - 1) * pageInfo.getPageSize());
+        return sightsMapper.getMore(pageInfo);
+    }
+
+    public Integer getCount() {
+        return sightsMapper.getCount();
+    }
 }

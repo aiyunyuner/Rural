@@ -109,4 +109,14 @@ public class SightsConsumeController {
     List<Sight> Beast(Integer u_id) {
         return sightsClient.Beast(u_id);
     }
+
+    @PostMapping("/getMore")
+    List<Sight> getMore( PageInfo pageInfo){
+        return sightsClient.getMore(pageInfo);
+    }
+
+    @PostMapping("/getCount")
+    Integer getCount(){
+        return  sightsClient.getCount();
+    }
 }

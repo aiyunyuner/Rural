@@ -58,6 +58,10 @@ public interface SightsMapper {
     @Select("SELECT * FROM sight WHERE u_id =#{u_id} limit #{start},#{pageSize}")
     List<Sight> getSightsAllByUser(PageInfo pageInfo);
 
+
+    @Select("SELECT * FROM sight   limit #{start},#{pageSize}")
+    List<Sight> getMore(PageInfo pageInfo);
+
     @Select("SELECT COUNT(id) FROM sight  where `u_id`=#{u_id}")
     Integer countTypeSightByUser(Integer u_id);
 
@@ -100,4 +104,7 @@ public interface SightsMapper {
     @Select("SELECT * FROM sight   ORDER BY click DESC   LIMIT 3,3")
     @Results({@Result(property = "type", column = "type"), @Result(property = "sightsType", column = "type", javaType = SightsType.class, one = @One(select = "com.TypeDelta.mapper.SightsMapper.getSightsTypeById"))})
     List<Sight> TOP3();
+
+    @Select("SELECT COUNT(id) FROM sight  ")
+    Integer getCount();
 }

@@ -20,6 +20,10 @@ spring:
     virtual-host: /
     username: admin
     password: admin
+feign:
+  hystrix:
+    enabled: true #开启feign对hystrix的支持 熔断开启
+
 #度量指标监控与健康检查
 management:
   endpoints:

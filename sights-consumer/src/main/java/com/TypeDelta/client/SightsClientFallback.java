@@ -92,4 +92,14 @@ public class SightsClientFallback implements SightsClient {
     public List<Sight> Beast(Integer u_id) {
         return null;
     }
+
+    @Override
+    public List<Sight> getMore(PageInfo pageInfo) {
+        return null;
+    }
+
+    @Override
+    public Integer getCount() {
+        return null;
+    }
 }

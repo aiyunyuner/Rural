@@ -18,6 +18,6 @@ public class User {
     private String error;
     private Integer result;
     private String image;
-
+    private Integer maner;
     private Integer u_id;
 }

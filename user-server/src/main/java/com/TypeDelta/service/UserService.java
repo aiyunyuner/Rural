@@ -61,4 +61,8 @@ public class UserService {
     public Integer countUser() {
         return userMapper.countUser();
     }
+
+    public Integer isManager(Integer id) {
+        return userMapper.isManager(id);
+    }
 }

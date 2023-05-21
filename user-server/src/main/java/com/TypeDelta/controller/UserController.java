@@ -21,8 +21,7 @@ import java.util.Map;
 /**
  * @Author: TypeDelta
  * 对user的管理
- */
-public class UserController {
+ */ public class UserController {
     @Value("${name}")
     private String name;
 
@@ -129,5 +128,12 @@ public class UserController {
     @GetMapping("/count")
     public Integer countUser() {
         return userService.countUser();
+    }
+
+    @PostMapping("/isManager")
+    public Boolean isManager(@RequestBody Integer u_id) {
+        if (userService.isManager(u_id) == 1) {
+            return true;
+        } else return false;
     }
 }

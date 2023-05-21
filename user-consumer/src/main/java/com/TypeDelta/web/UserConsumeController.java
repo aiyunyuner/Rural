@@ -72,4 +72,11 @@ public class UserConsumeController {
     public Integer countUser() {
         return userClient.countUser();
     }
+
+
+    @PostMapping("/isManager")
+    public Boolean isManager(Integer u_id) {
+        System.out.println(u_id);
+        return userClient.isManager(u_id);
+    }
 }
