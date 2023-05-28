@@ -1,0 +1,26 @@
+server:
+  port: 10086
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+  #    register-with-eureka: false #不将自动注册到eureka上面
+  #      指定特定的ip地址
+  #  instance:
+  #    lease-renewal-interval-in-seconds: 30 #心跳的频率30s一次
+  #    lease-expiration-duration-in-seconds: 90 #最小移除此服务时间90s未能检测到心跳
+
+  #  server:
+  #    enable-self-preservation: false #关闭了自我保护机制
+  #  instance:
+#    prefer-ip-address: true
+#    ip-address: 127.0.0.0.1
+spring:
+  application:
+    name: eureka-server
+#  官方默认启动8761
+#logging:
+#  level: info 显示日志的级别

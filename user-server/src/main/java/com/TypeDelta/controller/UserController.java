@@ -63,6 +63,11 @@ import java.util.Map;
 
     }
 
+    /**
+     * 不需要鉴定token的登录
+     * @param user
+     * @return
+     */
     @PostMapping("/login")
     User loginUser(@RequestBody User user) {
 //        user=;
@@ -76,6 +81,11 @@ import java.util.Map;
         return userService.selectAll();
     }
 
+    /**
+     * 鉴定token时使用的
+     * @param user
+     * @return
+     */
     @PostMapping("/userlogin")
     public Map<String, Object> tokenUserLogin(@RequestBody User user) {
         log.info(user.toString());
@@ -103,6 +113,11 @@ import java.util.Map;
         return map;
     }
 
+    /**
+     * token测试接口
+     * @param token
+     * @return
+     */
     @PostMapping("/test")
     public Map<String, Object> test(String token) {
         Map<String, Object> map = new HashMap<>();
@@ -111,6 +126,11 @@ import java.util.Map;
         return map;
     }
 
+    /**
+     * 用户更新
+     * @param user
+     * @return
+     */
     @PostMapping("/update")
     public String updateUser(@RequestBody User user) {
         if (userService.updateUser(user) == 1) {
@@ -120,16 +140,31 @@ import java.util.Map;
         }
     }
 
+    /**
+     * 带分页的查找所有用户
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
     @GetMapping("/selectPage")
     public List<User> userListAndPage(int currentPage, int pageSize) {
         return userService.userListAndPage((currentPage - 1) * pageSize, pageSize);
     }
 
+    /**
+     * 用户数量
+     * @return
+     */
     @GetMapping("/count")
     public Integer countUser() {
         return userService.countUser();
     }
 
+    /**
+     * 用户是否是管理员
+     * @param u_id
+     * @return
+     */
     @PostMapping("/isManager")
     public Boolean isManager(@RequestBody Integer u_id) {
         if (userService.isManager(u_id) == 1) {

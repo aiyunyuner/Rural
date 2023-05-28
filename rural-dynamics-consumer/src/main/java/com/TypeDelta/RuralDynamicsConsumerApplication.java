@@ -11,3 +11,9 @@ public class RuralDynamicsConsumerApplication {
         SpringApplication.run(RuralDynamicsConsumerApplication.class, args);
     }
 }
+
+
+
+
+
+

@@ -90,12 +90,18 @@ public class LoginFilter extends ZuulFilter {
             } else if (request.getRequestURI().contains("/employment")) {
                 logMe.setType("就业");
             }
-            logMe.setAction(request.getRequestURI());
-            logMe.setWhere("四川");
-            logMe.setTime(TimeUtils.setTime());
-            logService.insertLog(logMe);
-            ctx.setRequestQueryParams(requestQueryParams);
-            ctx.setSendZuulResponse(true);
+            if (request.getRequestURI().contains("/user")){
+                ctx.setRequestQueryParams(requestQueryParams);
+                ctx.setSendZuulResponse(true);
+            }else {
+                logMe.setAction(request.getRequestURI());
+                logMe.setWhere("四川");
+                logMe.setTime(TimeUtils.setTime());
+                logService.insertLog(logMe);
+                ctx.setRequestQueryParams(requestQueryParams);
+                ctx.setSendZuulResponse(true);
+            }
+
         } catch (SignatureVerificationException e) {
             e.printStackTrace();
 

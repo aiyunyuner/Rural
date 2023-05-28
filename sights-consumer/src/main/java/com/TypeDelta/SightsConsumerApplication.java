@@ -11,3 +11,6 @@ public class SightsConsumerApplication {
         SpringApplication.run(SightsConsumerApplication.class, args);
     }
 }
+
+
+

@@ -103,19 +103,19 @@ public class SightsService {
 
     public List<Sight> Beast(Integer u_id) {
 
-        List<Integer> u = sightsMapper.getU_id();
-        List<Integer> p = sightsMapper.getP_id();
+        List<Integer> u = sightsMapper.getU_id(); //获取所有用户的id值
+        List<Integer> p = sightsMapper.getP_id();//获取所有风景的id值
 
 //        int u_id = 6;
 //        List<Integer> u = new ArrayList<>();
 //        List<Integer> p = new ArrayList<>();
 //        List<Integer> v = new ArrayList<>();
         System.out.println(u.indexOf(u_id));
-        ;
 
-        double[][] simMatrix = new double[u.size()][p.size()];
 
-        for (int i = 0; i < simMatrix.length; i++) {
+        double[][] simMatrix = new double[u.size()][p.size()]; //建立矩阵
+
+        for (int i = 0; i < simMatrix.length; i++) {  //用户访问过风景则就其对应的矩阵填入1，没有访问过则填入0
             List<Integer> v = sightsMapper.getValue(u.get(i));
             System.out.println(v);
             System.out.println(v.isEmpty());
@@ -147,38 +147,36 @@ public class SightsService {
 
         }
 
-        List<Sight> sightList = new ArrayList<>();
+        List<Sight> sightList = new ArrayList<>(); //最终保存的结果集
         List<Double> doubles = null;
         List<Integer> integerList = null;
         List<Integer> addList = new ArrayList<>();
         HashMap<Integer, List<Integer>> map = new HashMap<>();
-        for (int k = 0; k < p.size(); k++) {
+        System.out.println("");
+        for (int k = 0; k < p.size(); k++) { //计算矩阵的相似度
             doubles = new ArrayList<>();
             integerList = new ArrayList<>();
             for (int i = 0; i < p.size(); i++) {
                 double v1 = 0;
                 double v2 = 0;
                 double v3 = 0;
-                System.out.println("");
                 for (int j = 0; j < u.size(); j++) {
                     v1 += (simMatrix[j][i] * simMatrix[j][k]);
                     v2 += (simMatrix[j][k]) * (simMatrix[j][k]);
                     v3 += (simMatrix[j][i]) * (simMatrix[j][i]);
                 }
+                //使用的是余弦相似度进行计算的
                 v1 = v1 / (Math.sqrt(v2) * Math.sqrt(v3));
-
-                doubles.add(v1);
+                doubles.add(v1);//相似度的结果
             }
-
+            System.out.println(doubles.toString());
             for (int i = 0; i < doubles.size(); i++) {
+                //相似度大于0.7的才进入结果行列
                 if (doubles.get(i) > 0.7) {
                     integerList.add(p.get(i));
                 }
             }
-
-
-            map.put(k, integerList);
-
+            map.put(k, integerList);//最终结果列
         }
         int result = 0;
         System.out.println(map.toString());
@@ -190,7 +188,7 @@ public class SightsService {
                 System.out.println(integers);
                 for (Integer l : integers) {
                     System.out.println(l);
-                    if (sightsMapper.notRead(l, u_id) == null && addList.indexOf(l) == -1 && result < 3) {
+                    if (sightsMapper.notRead(l, u_id) == null && addList.indexOf(l) == -1 && result < 3) { //没有被看过
                         addList.add(l);
                         sightList.add(sightsMapper.getSightsById(l));
                         result++;
@@ -200,7 +198,7 @@ public class SightsService {
         }
 
         if (sightList.isEmpty()) {
-            sightList = sightsMapper.TOP3();
+            sightList = sightsMapper.TOP3(); //如果结果为空，则使用top3
         }
         return sightList;
     }

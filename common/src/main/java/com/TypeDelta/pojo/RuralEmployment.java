@@ -2,6 +2,8 @@ package com.TypeDelta.pojo;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class RuralEmployment {
     private String name;
@@ -14,4 +16,6 @@ public class RuralEmployment {
     private Integer likeCount;
     private String color;
     private String u_id;
+
+
 }

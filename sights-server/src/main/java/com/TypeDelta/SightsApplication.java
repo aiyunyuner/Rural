@@ -11,3 +11,7 @@ public class SightsApplication {
         SpringApplication.run(SightsApplication.class, args);
     }
 }
+
+
+
+

@@ -21,4 +21,5 @@ public class Sight {
     private Integer likeCount;
 
     private String color;
+
 }

@@ -14,4 +14,5 @@ public class Agricultural {
     private Integer likeCount;
     private String color;
     private String u_id;
+
 }
